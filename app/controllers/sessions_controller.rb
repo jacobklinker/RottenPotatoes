@@ -10,11 +10,7 @@ class SessionsController < ApplicationController
     
     def create
         user = User.find_by_user_id(session_params[:user_id])
-        puts user.user_id
-        puts session_params[:user_id]
-        puts user.email
-        puts session_params[:email]
-        
+
         if !user || user.email != session_params[:email]
             flash[:notice] = "Invalid User-ID/E-Mail combination"
             redirect_to login_path
